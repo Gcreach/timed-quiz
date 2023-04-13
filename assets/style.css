@@ -1,0 +1,54 @@
+h1 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+}
+
+body {
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin: 0;
+    background-color: white;
+}
+
+.quiz-question1 {
+    display: none;
+    padding: 10px;
+}
+
+.quiz-question2 {
+    display: none;
+    padding: 10px;
+}
+
+.quiz-question3 {
+    display: none;
+    padding: 10px;
+}
+
+.finalScore {
+    display: none;
+    padding: 10px;
+}
+/* add style for button*/
+button {
+    background-color: purple;
+}
+
+/* add style for high score button */
+.high-score {
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    justify-content: left;
+}
+
+/* add style for timer */
+.timer-text {
+    text-align: right;
+    margin: 20px;
+}
+
+.highScoreList {
+    display: none;
+}
+
