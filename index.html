@@ -11,7 +11,7 @@
     <header>
         <h1>Coding Quiz Challenge</h1>
         <h2 class="timer-text" id="timer">75</h2>  
-        <a class="high-score" id="high-score" href="highscore.html">High Score</a>
+        <button class="high-score" id="high-score">High Score</button>
     </header>
     <main>
         <div class="mainPage" id="mainPage">
@@ -53,19 +53,18 @@
         </div>
             <div class="finalScore" id="finalScore">
                 <h2>All Done!</h2>
-                <p>Your final score is <span id="end">0</span></p>
+                <p>Your final score is <span id="end"></span></p>
                 <label>Enter initials</label>
                 <input type="text" name="initials" id="initials"/>
                 <button type="submit" id="submit">Submit</button>
-                <a class="high-score" href="highscore.html">High Score</a>
                 <ul id="score-list"></ul>
             </div>
             
             <div class="highScoreList" id="highScoreList">
                 <h2>High Score List</h2>
                 <button id="clear">Clear all</button>
-                <button id="go-back">Go Back</button>
-                <ul id="score-list"></ul>
+                <button id="go-back" onClick="window.location.reload()">Go Back</button>
+                <p><span id="score-list"></span></p>
             </div>
 
     </main>

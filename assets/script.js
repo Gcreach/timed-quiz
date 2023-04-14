@@ -10,13 +10,11 @@ var submitButton = document.getElementById('submit');
 var scoreList = document.getElementById('#score-list');
 var endText = document.querySelector('#end');
 
-
-var isWin = false;
 var timer;
 var timerCount = 75;
 var initialsList = [];
 
-var userScore;
+var userScore = 0;
 
 endText.textContent = userScore;
 
@@ -26,8 +24,10 @@ function startTimer() {
         timerElement.textContent = timerCount;
 
         if (timerCount === 0) {
+            clearInterval(timer);
             showFinalScore();
-        }
+        } 
+        
     }, 1000)
 }
 
@@ -54,6 +54,7 @@ function showQuiz1() {
     document.getElementById("quiz-question3").style.display = "none";
     document.getElementById("finalScore").style.display = "none";
     document.getElementById("highScoreList").style.display = "none";
+    document.getElementById("high-score").style.display = "none"
 
     var correct = document.getElementById("q1o4");
     var incorrect1 = document.getElementById("q1o1");
@@ -64,7 +65,7 @@ function showQuiz1() {
         userScore += 10;
     }
     else if (incorrect1.addEventListener('click', showQuiz2) || incorrect2.addEventListener('click', showQuiz2) || incorrect3.addEventListener('click', showQuiz2)) {
-        timerCount = timerCount - 10;
+        timerCount -= 10;
     }
 }
 
@@ -75,11 +76,14 @@ function showQuiz2() {
     document.getElementById("quiz-question3").style.display = "none";
     document.getElementById("finalScore").style.display = "none";
     document.getElementById("highScoreList").style.display = "none";
+    document.getElementById("high-score").style.display = "none"
 
     var correct = document.getElementById("q2o3");
     var incorrect1 = document.getElementById("q2o2");
     var incorrect2 = document.getElementById("q2o1");
     var incorrect3 = document.getElementById("q2o4");
+
+    console.log(userScore);
 
     if (correct.addEventListener('click', showQuiz3)) {
         userScore += 10;
@@ -96,10 +100,11 @@ function showQuiz3() {
     document.getElementById("quiz-question3").style.display = "block";
     document.getElementById("finalScore").style.display = "none";
     document.getElementById("highScoreList").style.display = "none";
+    document.getElementById("high-score").style.display = "none"
 
     var correct = document.getElementById("q3o3");
     var incorrect1 = document.getElementById("q3o1");
-    var incorrect2 = document.getElementById("q2o2");
+    var incorrect2 = document.getElementById("q3o2");
     var incorrect3 = document.getElementById("q3o4");
 
     if (correct.addEventListener('click', showFinalScore)) {
@@ -118,20 +123,10 @@ function showFinalScore() {
     document.getElementById("finalScore").style.display = "block";
     document.getElementById("timer").style.display = "none";
     document.getElementById("highScoreList").style.display = "none";
+    document.getElementById("high-score").style.display = "block";
 
     submitButton.addEventListener("click", showHighScoreList)
   
-}
-
-function showMain() {
-    main = document.getElementById("mainPage").style.display = "block";
-    document.getElementById("quiz-question1").style.display = "none";
-    document.getElementById("quiz-question2").style.display = "none";
-    document.getElementById("quiz-question3").style.display = "none";
-    document.getElementById("finalScore").style.display = "none";
-    document.getElementById("timer").style.display = "none";
-    document.getElementById("highScoreList").style.display = "none";
-
 }
 
 function showHighScoreList() {
@@ -142,7 +137,9 @@ function showHighScoreList() {
     document.getElementById("finalScore").style.display = "none";
     document.getElementById("timer").style.display = "none";
     document.getElementById("highScoreList").style.display = "block";
+    document.getElementById("high-score").style.display = "none"
 
+    console.log(userScore);
     showHighscores();
     
 }
@@ -160,7 +157,7 @@ function getHighScore() {
 
      var userInitials = {
          initials: enterInitials.value.trim(),
-         score: scoreList
+         score: userScore
         };
         initialsList.push(userInitials);
         localStorage.setItem("userInitials", JSON.stringify(userInitials));
@@ -169,18 +166,14 @@ function getHighScore() {
 
     function showHighscores () {
         var list = JSON.parse(localStorage.getItem("initialsList"));
-        if (list !== null) {
-            for (var i = 0; i < list.length; i++) {
-                var listEL = document.createElement("li");
-                listEL.textContent = i+1 + ". " + list[i].name + " - " + list[i].highScore;
-                scoreList.appendChild(li);
-            }
-        }
+       
     }
-    
-    backButton.addEventListener("click", showMain);
 
-    showHighscores();
+    
+
+   
+    
+
 
   
 
