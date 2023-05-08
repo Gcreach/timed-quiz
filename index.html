@@ -1,73 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./assets/style.css" />
-</head>
-<body>
-    <header>
-        <h1>Coding Quiz Challenge</h1>
-        <h2 class="timer-text" id="timer">75</h2>  
-        <button class="high-score" id="high-score">High Score</button>
-    </header>
-    <main>
-        <div class="mainPage" id="mainPage">
-        <p>Try to answer the following code-related questions within the time limit. Keep in mind that that incorrect answers will penalize your score/time by ten seconds! </p>
-        <button class ="start-button" id="start-button">Start Quiz</button>
-        </div>
-        <div class="quiz-question1" id="quiz-question1">
-            <h1>Arrays in Javascript can be used for ___.</h1>
-            <div class="quiz-option1">
-                <ul>
-                    <li><button id="q1o1">1.numbers and strings</button></li>
-                    <li><button id="q1o2">2.other arrays</button></li>
-                    <li><button id="q1o3">3.booleans</button></li>
-                    <li><button id="q1o4">4.all of the above</button></li>
-                </ul>
-            </div>
-        </div>
-        <div class="quiz-question2" id="quiz-question2">
-            <h1>String values must be enclosed within ___ when being assigned to variables.</h1>
-            <div class="quiz-option2">
-                <ul>
-                    <li><button id="q2o1">1.commas</button></li>
-                    <li><button id="q2o2">2.curly brackets</button></li>
-                    <li><button id="q2o3">3.quotes</button></li>
-                    <li><button id="q2o4">4.parentheses</button></li>
-                </ul>
-            </div>
-        </div>
-        <div class="quiz-question3" id="quiz-question3">
-            <h1>Commonly used data types DO NOT include:</h1>
-            <div class="quiz-option3">
-                <ul>
-                    <li><button id="q3o1">1.strings</button></li>
-                    <li><button id="q3o2">2.booleans</button></li>
-                    <li><button id="q3o3">3.alerts</button></li>
-                    <li><button id="q3o4">4.numbers</button></li>
-                </ul>
-            </div>
-        </div>
-            <div class="finalScore" id="finalScore">
-                <h2>All Done!</h2>
-                <p>Your final score is <span id="end"></span></p>
-                <label>Enter initials</label>
-                <input type="text" name="initials" id="initials"/>
-                <button type="submit" id="submit">Submit</button>
-                <ul id="score-list"></ul>
-            </div>
-            
-            <div class="highScoreList" id="highScoreList">
-                <h2>High Score List</h2>
-                <button id="clear">Clear all</button>
-                <button id="go-back" onClick="window.location.reload()">Go Back</button>
-                <p><span id="score-list"></span></p>
-            </div>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link rel="stylesheet" href="./assets/style.css" />
+	</head>
+	<body>
+		<header>
+			<h1>Coding Quiz Challenge</h1>
+			<h2 class="timer-text" id="timer">75</h2>
+			<button class="high-score" id="high-score">High Score</button>
+		</header>
+		<main>
+			<div class="mainPage" id="mainPage">
+				<p>
+					Try to answer the following code-related questions within the time
+					limit. Keep in mind that that incorrect answers will penalize your
+					score/time by ten seconds!
+				</p>
+				<button class="start-button" id="start-button">Start Quiz</button>
+			</div>
+			<div class="quiz-question1" id="quiz-question1">
+				<h1>Arrays in Javascript can be used for ___.</h1>
+				<div class="quiz-option1">
+					<ul>
+						<li>
+							<button id="q1o1" onclick="verifyAnswer('q1o1')">
+								1.numbers and strings
+							</button>
+						</li>
+						<li>
+							<button id="q1o2" onclick="verifyAnswer('q1o2')">
+								2.other arrays
+							</button>
+						</li>
+						<li>
+							<button id="q1o3" onclick="verifyAnswer('q1o3')">
+								3.booleans
+							</button>
+						</li>
+						<li>
+							<button id="q1o4" onclick="verifyAnswer('q1o4')">
+								4.all of the above
+							</button>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="quiz-question2" id="quiz-question2">
+				<h1>
+					String values must be enclosed within ___ when being assigned to
+					variables.
+				</h1>
+				<div class="quiz-option2">
+					<ul>
+						<li>
+							<button id="q2o1" onclick="verifyAnswer('q2o1')">1.commas</button>
+						</li>
+						<li>
+							<button id="q2o2" onclick="verifyAnswer('q2o2')">
+								2.curly brackets
+							</button>
+						</li>
+						<li>
+							<button id="q2o3" onclick="verifyAnswer('q2o3')">3.quotes</button>
+						</li>
+						<li>
+							<button id="q2o4" onclick="verifyAnswer('q2o4')">
+								4.parentheses
+							</button>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="quiz-question3" id="quiz-question3">
+				<h1>Commonly used data types DO NOT include:</h1>
+				<div class="quiz-option3">
+					<ul>
+						<li>
+							<button id="q3o1" onclick="verifyAnswer('q3o1')">
+								1.strings
+							</button>
+						</li>
+						<li>
+							<button id="q3o2" onclick="verifyAnswer('q3o2')">
+								2.booleans
+							</button>
+						</li>
+						<li>
+							<button id="q3o3" onclick="verifyAnswer('q3o3')">3.alerts</button>
+						</li>
+						<li>
+							<button id="q3o4" onclick="verifyAnswer('q3o4')">
+								4.numbers
+							</button>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="finalScore" id="finalScore">
+				<h2>All Done!</h2>
+				<p>Your final score is <span id="end"></span></p>
+				<label>Enter initials</label>
+				<input type="text" name="initials" id="initials" />
+				<button type="submit" id="submit">Submit</button>
+			</div>
 
-    </main>
-    <script src="./assets/script.js"></script>
-</body>
+			<div class="highScoreList" id="highScoreList">
+				<h2>High Score List</h2>
+				<button id="clear">Clear all</button>
+				<button id="go-back" onClick="window.location.reload()">Go Back</button>
+				<ul id="score-list">
+				</ul>
+			</div>
+		</main>
+		<script src="./assets/script.js"></script>
+	</body>
 </html>
