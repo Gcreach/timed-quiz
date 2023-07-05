@@ -12,7 +12,7 @@ var endText = document.querySelector('#end');
 
 var timer;
 var timerCount = 75;
-var initialsList;
+let initialsList = JSON.parse(localStorage.getItem('userInitials')) || [ ];
 
 var userScore = 0;
 
@@ -35,15 +35,6 @@ function startGame() {
 	startTimer();
 	showQuiz1();
 }
-
-function init() {
-	initialsList = JSON.parse(localStorage.getItem('score-list'));
-
-	if (!initialsList) {
-		initialsList = [];
-	}
-}
-init();
 
 startButton.addEventListener('click', startGame);
 
@@ -77,6 +68,7 @@ function showQuiz3() {
 	document.getElementById('high-score').style.display = 'none';
 }
 
+// Checks to see if the answer is right or wrong.
 function verifyAnswer(answer) {
 	var answerArr = answer.split('');
 	var questionNum = answerArr[1];
@@ -112,7 +104,6 @@ function showFinalScore() {
 	document.getElementById('quiz-question3').style.display = 'none';
 	document.getElementById('finalScore').style.display = 'block';
 	document.getElementById('timer').style.display = 'none';
-	document.getElementById('highScoreList').style.display = 'none';
 	document.getElementById('high-score').style.display = 'block';
 
 	endText.textContent = userScore;
@@ -134,6 +125,7 @@ function showHighScoreList() {
 	showHighscores();
 }
 
+// Displays the high scores
  function showHighscores() {
 	var lastHighScore = JSON.parse(localStorage.getItem('userInitials'));
 	scoreList.innerHTML = '';
@@ -145,10 +137,11 @@ function showHighScoreList() {
             listEL.textContent = i+1 + ". " + lastHighScore[i].initials + " - " + lastHighScore[i].score;
 			console.log(listEL);
             scoreList.append(listEL);
-			//console.log(lastHighScore[i]);
 
+			// Clears any previous entries
 			clearButton.addEventListener('click', function (event) {
 				listEL.remove();
+				localStorage.clear();
 			})
         }
     } 
@@ -156,6 +149,7 @@ function showHighScoreList() {
 	console.log(timer);
 } 
 
+// Pushes the initals and the score to the list
 submitButton.addEventListener('click', function (event) {
 	event.preventDefault();
 

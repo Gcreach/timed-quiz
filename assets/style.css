@@ -32,6 +32,9 @@ body {
 /* add style for button*/
 button {
     background-color: purple;
+    padding: 10px;
+    margin: 7px;
+    color: whitesmoke;
 }
 
 /* add style for high score button */
@@ -50,5 +53,16 @@ button {
 
 .highScoreList {
     display: none;
+}
+
+.correct {
+    display: none;
+    margin-right: 20px;
+    padding: 20px;
+    clear: both;
+    float: right;
+    width: 20%;
+    height: 100%;
+    font-family: 'Gill Sans', Calibri, 'Trebuchet MS', sans-serif;
 }
 
